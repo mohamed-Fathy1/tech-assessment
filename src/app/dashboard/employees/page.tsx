@@ -1,49 +1,28 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { getEmployees, getEmployeesForced } from "@/lib/actions/employee";
+import { EmployeeTable } from "@/components/employees/employee-table";
+import { Metadata } from "next";
 
-export default function EmployeesPage() {
-  const employees = [
-    { id: 1, name: "John Doe", position: "Frontend Developer", department: "Engineering", status: "Active" },
-    { id: 2, name: "Jane Smith", position: "Product Manager", department: "Product", status: "Active" },
-    { id: 3, name: "Michael Johnson", position: "UX Designer", department: "Design", status: "Active" },
-    { id: 4, name: "Sarah Williams", position: "Backend Developer", department: "Engineering", status: "On Leave" },
-    { id: 5, name: "Robert Brown", position: "DevOps Engineer", department: "Operations", status: "Active" },
-  ];
+export const metadata: Metadata = {
+  title: "Employees | Blurr HR Portal",
+  description: "Manage your organization's employees",
+};
+
+// Force dynamic rendering to disable caching
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function EmployeesPage() {
+  // Try the normal method first
+  let employees = await getEmployees();
+
+  // If no employees found, try the forced method as a fallback
+  if (!employees || employees.length === 0) {
+    employees = await getEmployeesForced();
+  }
 
   return (
-    <div className="container p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">Employees</h1>
-      </div>
-      
-      <Card>
-        <CardHeader>
-          <CardTitle>Employee Directory</CardTitle>
-          <CardDescription>Manage your organization&apos;s employees</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Position</TableHead>
-                <TableHead>Department</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {employees.map((employee) => (
-                <TableRow key={employee.id}>
-                  <TableCell className="font-medium">{employee.name}</TableCell>
-                  <TableCell>{employee.position}</TableCell>
-                  <TableCell>{employee.department}</TableCell>
-                  <TableCell>{employee.status}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+    <div className="container space-y-6">
+      <EmployeeTable employees={employees || []} />
     </div>
   );
-} 
+}

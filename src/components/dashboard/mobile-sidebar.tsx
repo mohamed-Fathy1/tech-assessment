@@ -10,7 +10,10 @@ export function MobileSidebar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet
+      open={open}
+      onOpenChange={setOpen}
+    >
       <SheetTrigger asChild>
         <Button
           variant="outline"
@@ -21,11 +24,14 @@ export function MobileSidebar() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 w-[300px]">
+      <SheetContent
+        side="left"
+        className="p-0 w-[224px]"
+      >
         <div className="h-full flex">
           <DashboardSidebar />
         </div>
       </SheetContent>
     </Sheet>
   );
-} 
+}

@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { AuthDebugger } from "@/components/auth-debugger";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -7,7 +8,9 @@ export default async function DashboardPage() {
   return (
     <div className="container p-6">
       <h1 className="text-3xl font-bold mb-6">Dashboard Overview</h1>
-      
+
+      <AuthDebugger />
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card>
           <CardHeader>
@@ -18,7 +21,7 @@ export default async function DashboardPage() {
             <p>This is your protected dashboard page.</p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Active Employees</CardTitle>
@@ -28,7 +31,7 @@ export default async function DashboardPage() {
             <p className="text-3xl font-semibold">24</p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
@@ -45,4 +48,4 @@ export default async function DashboardPage() {
       </div>
     </div>
   );
-} 
+}

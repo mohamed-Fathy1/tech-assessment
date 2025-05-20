@@ -1,0 +1,131 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Blurr HR Portal – Technical Assessment Rule
+
+## Overview
+
+This project involves building a production-ready full-stack React application for managing employees and their projects for the Blurr HR Portal.
+
+You're expected to **use AI heavily** for each part of the process — from planning, architecture, and code generation to refinement.
+
+## Goal
+
+Create a web portal where users can:
+
+* Log in and manage their employees
+* Generate monthly salary tables
+* Create and manage projects and tasks
+* View tasks in Kanban and backlog formats
+* (Bonus) Interact with an AI chatbot to query their projects/tasks
+
+## Stack
+
+* **Frontend**: React, TailwindCSS, shadcn/ui
+* **Backend**: Next.js (App Router) with Server Actions
+* **Database**: SQLite (Prisma ORM)
+* **Auth**: NextAuth.js
+
+## Directives
+
+* Use AI agents (CursorAI, ChatGPT, WindsurfAI) to:
+
+  * Plan features and data models
+  * Architect and structure the project
+  * Generate production-quality code
+  * Document each step in the `/ai` directory
+
+* Store all AI prompts, outputs, decisions, and architecture notes as markdown files for review.
+
+* Think like a senior developer guiding a junior AI intern — break down big tasks, define subgoals, and guide implementation.
+
+## Scope
+
+### ✅ Authentication
+
+* Sign up / login
+* Use NextAuth.js with Prisma adapter
+* Session persistence and route protection
+
+### ✅ Employee Management
+
+* Employee CRUD
+* Fields: employeeId, name, joiningDate, basicSalary
+* Salary table per month with:
+
+  * Bonus and deductions input
+  * Auto-calculated total
+
+### ✅ Projects & Tasks
+
+* Project CRUD
+* Task CRUD: title, description, priority, assignedTo, status
+* Task assignment to employees
+* Display tasks in Kanban view (by status)
+* Backlog view for all tasks
+
+### 🔁 Bonus
+
+* AI chatbot to answer questions like:
+
+  * "What are my tasks today?"
+  * "What’s the status of Project Apollo?"
+
+   **UI/UX**
+   - Create clean, professional UI with Tailwind CSS
+   - Use shadcn/ui components consistently
+   - Ensure mobile responsiveness
+   - Implement intuitive navigation and user flows
+   - Add proper loading states and error handling
+   - Be creative but don't break the existing UI language
+
+- **Code Quality**
+   - Write maintainable, production-ready code
+   - Add appropriate comments and documentation
+   - Implement proper error handling
+   - Follow TypeScript best practices with proper typing
+   - Use consistent naming conventions
+
+- **Performance**
+   - Optimize database queries
+   - Implement proper caching strategies
+   - Use efficient React patterns (memoization, etc.)
+   - Minimize unnecessary re-renders
+
+- **Security**
+   - Implement proper authentication and authorization
+   - Validate user inputs
+   - Protect sensitive routes and data
+   - Handle edge cases securely
+
+## Best Practices
+
+* Always ask the AI to:
+
+  * Propose optimal file and folder structure
+  * Suggest scalable schema design
+  * Generate typed server actions and validation with Zod
+  * Use best practices in React (modularity, reusability)
+  * Follow Tailwind and shadcn/ui design patterns
+
+* Create a `.md` plan per feature in `/ai` folder before coding.
+  Example:
+
+  ```
+  /ai/employee-salary-table.md
+  /ai/project-management.md
+  ```
+
+* Prioritize clean, modular, testable code.
+
+* Validate inputs and handle errors gracefully.
+
+## Deliverables
+
+* GitHub repo link with:
+
+  * Fully working application
+  * `/ai/` directory with planning & prompt logs
+  * Clean commit history
