@@ -121,7 +121,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             key={index}
             className="w-1/5 px-1 mb-2"
           >
-            <Card className={`${status.color} h-[60px]`}>
+            <Card className={`${status.color} h-[60px] p-2`}>
               <CardContent className="p-2 flex items-center justify-between">
                 <div className="flex items-center">
                   {status.icon}

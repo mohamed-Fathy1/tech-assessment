@@ -163,10 +163,10 @@ export function KanbanBoard({ tasks }: KanbanBoardProps) {
                           className={`shadow-sm transition-all duration-200 ${
                             snapshot.isDragging
                               ? "shadow-lg scale-[1.03] rotate-1 z-50 opacity-90"
-                              : "hover:shadow hover:translate-y-[-2px]"
+                              : "hover:ring-2 hover:translate-y-[-2px]"
                           } ${
                             task.id === activeTask ? "ring-2 ring-primary shadow-md" : ""
-                          } group relative bg-card border-card`}
+                          } group relative bg-card border-card py-3 pl-1`}
                         >
                           <div
                             className={`absolute top-0 left-0 w-1 h-full rounded-l-md ${getPriorityColor(

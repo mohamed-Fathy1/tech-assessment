@@ -60,11 +60,11 @@ export function DashboardSidebar() {
               icon={<Users className="h-3.5 w-3.5" />}
               title="All Employees"
             />
-            <SidebarNavItem
+            {/* <SidebarNavItem
               href="/dashboard/employees/new"
               icon={<UserPlus className="h-3.5 w-3.5" />}
               title="Add Employee"
-            />
+            /> */}
             <SidebarNavItem
               href="/dashboard/employees/salary-table"
               icon={<DollarSign className="h-3.5 w-3.5" />}
